@@ -1,0 +1,6 @@
+[submodule "aerospike-docker-swarm"]
+	path = aerospike-docker-swarm
+	url = https://github.com/aerospike/aerospike-docker-swarm.git
+[submodule "YCSB"]
+	path = YCSB
+	url = https://github.com/brianfrankcooper/YCSB.git
