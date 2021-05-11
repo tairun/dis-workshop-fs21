@@ -27,7 +27,7 @@ do
         echo -e ">> \e[43mInserting data\e[0m"
         ./bin/ycsb load aerospike -P workloads/workload$i -P ../overwrite.dat -p as.namespace=test -p recordcount=$j -s >../benchmark-output/outputLoad-$i-$j.log || break 2;
         echo -e ">> \e[42mRunning benchmark\e[0m"
-        ./bin/ycsb run aerospike -P workloads/workload$i -P ../overwrite.dat -p as.namespace=test -p recordcount=$j -s >../benchmark-output/outputRun-$i-$j.log || break 2;
+        ./bin/ycsb run aerospike -P workloads/workload$i -P ../overwrite.dat -p as.namespace=test -p operationcount=$j -s >../benchmark-output/outputRun-$i-$j.log || break 2;
         echo -e ">> \e[31m- - - - - - - - - -\e[0m"
     done
 done
