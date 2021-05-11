@@ -1,0 +1,35 @@
+2021-05-11 15:25:38:186 0 sec: 0 operations; est completion in 0 second 
+2021-05-11 15:25:38:310 0 sec: 1000 operations; 5617.98 current ops/sec; [SCAN-FAILED AverageLatency(us)=28.74] [CLEANUP AverageLatency(us)=879] [INSERT AverageLatency(us)=1059.87]  
+[OVERALL], RunTime(ms), 179
+[OVERALL], Throughput(ops/sec), 5586.592178770949
+[TOTAL_GCS_G1_Young_Generation], Count, 1
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 9
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 5.027932960893855
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 1
+[TOTAL_GC_TIME], Time(ms), 9
+[TOTAL_GC_TIME_%], Time(%), 5.027932960893855
+[SCAN-FAILED], Operations, 953
+[SCAN-FAILED], AverageLatency(us), 28.735571878279117
+[SCAN-FAILED], MinLatency(us), 4
+[SCAN-FAILED], MaxLatency(us), 1417
+[SCAN-FAILED], 0, 28.735571878279117
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 879.0
+[CLEANUP], MinLatency(us), 879
+[CLEANUP], MaxLatency(us), 879
+[CLEANUP], 0, 879.0
+[INSERT], Operations, 47
+[INSERT], AverageLatency(us), 1059.872340425532
+[INSERT], MinLatency(us), 396
+[INSERT], MaxLatency(us), 13089
+[INSERT], Return=OK, 47
+[INSERT], 0, 1059.872340425532
+[SCAN], Operations, 0
+[SCAN], AverageLatency(us), NaN
+[SCAN], MinLatency(us), -1
+[SCAN], MaxLatency(us), -1
+[SCAN], Return=ERROR, 953
+[SCAN], 0, NaN
