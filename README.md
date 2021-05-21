@@ -43,7 +43,18 @@ We can start the docker images and start a shell to inspect the container more c
    multipass exec swarm-node1 -- "$SWARM_REGISTER_CMD"
    multipass exec swarm-node2 -- "$SWARM_REGISTER_CMD"
    multipass shell swarm-leader
-   git clone 
+   docker nodes ls
+   git clone https://github.com/tairun/aerospike-docker-swarm.git
+   cd aerospike-docker-swarm
+   nano aerospike.conf # Edit access-address in network section
+   # Deploy the stack
+   docker stack deploy -c aerospike.yml aerospike
+   # Verify the stack
+   # docker service logs aerospike_aeropsikedb
+   docker stack ls
+   docker service ls
+   # Scale the cluster
+   docker service scale aerospike_aerospikedb=3
    ```
 
 ## Sources ##
