@@ -1,5 +1,7 @@
 # README #
 
+The objective of the workshop is to analyze, present, and demonstrate NoSQL systems and their concepts and to benchmark it using the Yahoo! Cloud Serving Benchmark (YCSB).
+
 ## Prerequisites ##
 
 - Linux Host (preferably Ubuntu 20.04 LTS)
