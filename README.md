@@ -4,21 +4,47 @@
 
 - Linux Host (preferably Ubuntu 20.04 LTS)
 - Docker CE Engine (v...)
-- Python 3.6+ & Python 2.7+ for YCSB (available in /usr/env/python)
+- Python 3.6+ & Python 2.7+ for YCSB (available in /usr/env/python <-- use a symlink)
 - Multipass
 
 ## How it works
 
-## How to Run
+![Setup](setup.png)
 
-```bash
-docker run -d -v $(pwd)/confs/:/opt/aerospike/etc/ --name aerospike -p 3000-3002:3000-3002 aerospike/aerospike-server --config-file /opt/aerospike/etc/aerospike-mem_4G-rf_1.conf
+### Single Node Setup ###
 
-docker exec -it aerospike asinfo -v "namespace/test" >namespace-test.conf
+1. Run the script `./run-benchmark.sh` from a terminal with bash to start the benchmark (starts docker image with specified config and workloads automatically). You can change the config used, workloads and record count at the top of the bash file if you'd like.
+2. Execute the plot script `python3 plot-benchmark.py` to create the workload plots.
+3. Done.
 
-docker stop aerospike && docker rm aerospike
+We can start the docker images and start a shell to inspect the container more closely if neccessary.
 
-```
+1. Run the Aerospike Server Docker Image with  
+   `docker run -d -v "$(pwd)/confs/:/opt/aerospike/etc/" --name aerospike -p 3000-3002:3000-3002 aerospike/aerospike-server --config-file /opt/aerospike/etc/aerospike-mem_4G-rf_1.conf`.  
+   Change the *--config-file* parameter according to your needs.
+2. Run `docker exec -it aerospike /bin/bash`.
+3. Or export and verify the current config with `docker exec -it aerospike asinfo -v "namespace/test" >namespace-test.conf`.
+
+### Multi Node Docker Swarm Cluster ###
+
+**This did not work during testing!!!**
+
+1. Start 3 virtual docker hosts with multipass:
+   ```bash
+   multipass launch --name=as-swarm-leader --cpus=2 --disk=5G --mem=2G --cloud-init=cloud-init.yaml lts
+   multipass launch --name=as-swarm-node1 --cpus=1 --disk=5G --mem=2G --cloud-init=cloud-init.yaml lts
+   multipass launch --name=as-swarm-node2 --cpus=1 --disk=5G --mem=2G --cloud-init=cloud-init.yaml lts
+   ```
+
+2. Create Docker Swarm:
+   ```bash
+   multipass exec swarm-leader docker swarm init
+   SWARM_REGISTER_CMD=<copy from output>
+   multipass exec swarm-node1 -- "$SWARM_REGISTER_CMD"
+   multipass exec swarm-node2 -- "$SWARM_REGISTER_CMD"
+   multipass shell swarm-leader
+   git clone 
+   ```
 
 ## Sources ##
 
